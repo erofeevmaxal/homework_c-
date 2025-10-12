@@ -8,18 +8,19 @@ namespace Task5
     {
         static void Main(string[] args)
         {
-            const int TOP_WORDS_WE_WANT = 3;
+            const int TOP_WORDS_NUMBER = 3;
             Console.WriteLine("Введите текст в одну строку");
             string input = Console.ReadLine();
 
             if (input == null || input == "")
             {
-                Console.WriteLine("Мне от тебя нужен непустой текст, хитрец");
+                Console.WriteLine("Ошибка: пустая строка");
             }
-            List<char> separators = new List<char> { '.', ';', '?', '!' };
-            string[] sentences = input.Split(separators.ToArray(), StringSplitOptions.RemoveEmptyEntries);
-            separators.Add(' ');
-            string[] words = input.Split(separators.ToArray(), StringSplitOptions.RemoveEmptyEntries);
+            char[] sentencesSeparators = ['.', ';', '?', '!'];
+            char[] wordsSeparators = ['.', ';', '?', '!', ',', ':'];
+
+            string[] sentences = input.Split(sentencesSeparators, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = input.Split(wordsSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             Console.WriteLine($"всего слов: {words.Count()}");
             Console.WriteLine($"всего предложений: {sentences.Count()}");
@@ -33,7 +34,7 @@ namespace Task5
 
             var topWords = wordCounter
                 .OrderByDescending(w => w.Value)
-                .Take(TOP_WORDS_WE_WANT);
+                .Take(TOP_WORDS_NUMBER);
 
             double averageWordLength = words.Length > 0 ? words.Average(w => w.Length) : 0;
 

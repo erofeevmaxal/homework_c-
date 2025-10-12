@@ -8,9 +8,16 @@ namespace Task1
         {
             Console.Write("температура в градусах Цельсия: ");
             string input = Console.ReadLine();
-            float degreesCelsius = float.Parse(input);
-            float degreesFahrenheit = degreesCelsius * 1.8f + 32;
-            Console.WriteLine($"температура в градусах Фаренгейта: {degreesFahrenheit}");
+
+            if (float.TryParse(input, out float degreesCelsius))
+            {
+                float degreesFahrenheit = degreesCelsius * 1.8f + 32;
+                Console.WriteLine($"{degreesCelsius}°C = {degreesFahrenheit}°F");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: некорректное число.");
+            }
         }
     }
 }
