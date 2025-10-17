@@ -8,7 +8,7 @@ namespace Task5
     {
         static void Main(string[] args)
         {
-            const int TOP_WORDS_NUMBER = 3;
+            const int TopWordsNumber = 3;
             Console.WriteLine("Введите текст в одну строку");
             string input = Console.ReadLine();
 
@@ -34,7 +34,7 @@ namespace Task5
 
             var topWords = wordCounter
                 .OrderByDescending(w => w.Value)
-                .Take(TOP_WORDS_NUMBER);
+                .Take(TopWordsNumber);
 
             double averageWordLength = words.Length > 0 ? words.Average(w => w.Length) : 0;
 
